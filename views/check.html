@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="resized.ico">
+    <title>About me</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,400i,700&display=swap");
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Titillium Web", sans-serif;
+            font-size: 20px;
+            line-height: 1.4;
+            color: #161b1e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle at 50% 50%, #000000, #d7ccd4);
+            cursor: none;
+        }
+
+        .quote-wrapper {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .circle:hover {
+            background: linear-gradient(90deg, #ffa719, #c09b06, #8a8a14, #5c7521, #375d28, #1d4528, #112d21, #0c1513);
+            box-shadow: 0 0 20px rgba(189, 235, 241, 0.979);
+            transform: scale(1.05);
+        }
+
+        .circle .content {
+            display: none;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(228, 209, 209, 0.952);
+            width: 300px;
+            text-align: left;
+            z-index: 5;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .circle:hover .content {
+            display: block;
+            transform: translateX(150%) scale(1);
+            opacity: 1;
+        }
+
+        .circle1 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(90deg, #000000, #0f030b, #190713, #200a19, #270c1f, #2f0c25, #380c2b, #400a31);
+            border: 1px solid #effcff;
+            z-index: 4;
+        }
+
+        .circle2 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(90deg, #0c5c6e, #387181, #578795, #759da9, #93b4bd, #b1ccd3, #d0e4e9, #effcff);
+            border: 1.5px solid #effcff;
+            z-index: 3;
+        }
+
+        .circle3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(90deg, #000000, #0f030b, #190713, #200a19, #270c1f, #2f0c25, #380c2b, #400a31);
+            border: 2px solid #effcff;
+            z-index: 2;
+        }
+
+        .circle4 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(90deg, #e8ffe867, #ced2c9);
+            border: 3px solid #effcff;
+            z-index: 1;
+        }
+
+        @media (min-width: 850px) {
+            .quote-wrapper {
+                width: 600px;
+                height: 600px;
+            }
+
+            .circle1 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle2 {
+                width: 300px;
+                height: 300px;
+            }
+
+            .circle3 {
+                width: 400px;
+                height: 400px;
+            }
+
+            .circle4 {
+                width: 500px;
+                height: 500px;
+            }
+        }
+
+        .circle img {
+            display: none;
+            max-width: 120px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .circle:hover img {
+            display: inline-block;
+        }
+
+        .circle .label1 {
+            position: absolute;
+            transform: rotate(-8deg);
+            color: #bee4ee;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /*
+        .circle .label {
+            position: absolute;
+            top: 14px;
+            left: 46%;
+            transform: translateX(-50%) rotate(-8deg);
+            color:rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        */
+
+        .content h2 {
+            text-align: center;
+        }
+
+        .cursorcircle {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(to top left, #0062bE, #00A2FE);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -20px 0 0 -20px;
+            pointer-events: none;
+            mix-blend-mode: normal;
+            z-index: 10;
+        }
+
+        .circle-behind {
+            position: absolute;
+            border-radius: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            width: 550px;
+            height: 550px;
+            animation: fadeOut 3s infinite;
+            z-index: 0;
+        }
+
+        .circle-behind1 {
+            position: absolute;
+            border-radius: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            width: 600px;
+            height: 600px;
+            animation: fadeOut 3s infinite;
+            z-index: 0;
+        }
+
+        .circle-behind2 {
+            position: absolute;
+            border-radius: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            width: 650px;
+            height: 650px;
+            animation: fadeOut 3s infinite;
+            z-index: 0;
+        }
+
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0;
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cursorcircle" class="cursorcircle"></div>
+    <div class="quote-wrapper">
+        <div class="circle-behind"></div>
+        <div class="circle-behind1"></div>
+        <div class="circle-behind2"></div>
+        <div class="circle circle1">
+            <div class="label1">Hover me.</div>
+            <div class="content">
+                <h2><u>About Me</u></h2>
+                <p>• Hello, my name is <b>Karthik</b>. I'm currently pursuing my Bachelor's degree in Technology,
+                    specializing in computer science and electronics.</p>
+                <p>• I have a strong passion for technology and a keen interest in programming.</p>
+                <p>• I'm eager to apply my knowledge and skills in a challenging environment.</p>
+            </div>
+        </div>
+        <div class="circle circle2">
+            <div class="label">Hover me</div>
+            <div class="content">
+                <h2><u>Hobbies</u></h2>
+                <p>• Build websites for yourself, learning new technologies like HTML, CSS, and JavaScript.</p>
+                <p>• Create artwork, logos, or other visuals using software like Canva or Illustrator.</p>
+                <p>• Listening to Songs.</p>
+                <p>• Commute by bike, go on long rides, or explore trails.</p>
+                <p>• Get lost in books, whether fiction or non-fiction.</p>
+            </div>
+        </div>
+        <div class="circle circle3">
+            <div class="label">Hover me</div>
+            <div class="content">
+                <h2><u>Education</u></h2>
+                <p>• I have completed my high school education at Kottayam, Kerala, India, in the year 2020.</p>
+                <p>• I am currently pursuing Bachelor of Technology program at KL Engineering University, Vijayawada,
+                    Andhra Pradesh, India, specializing in computer science and electronics. My graduation date is 2026.
+                </p>
+                <p>• I have completed my Pre-University from Narayana College(a PCMC student) at Karnataka, India, in
+                    the year 2022.</p>
+            </div>
+        </div>
+        <div class="circle circle4">
+            <div class="label">Hover me</div>
+            <div class="content">
+                <h2><u>Photos</u></h2>
+                <img src="face1.png" alt="Face 1" />
+                <img src="face2.png" alt="Face 2" />
+                <img src="face3.png" alt="Face 3" />
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/kinet@latest/dist/kinet.min.js"></script>
+    <script>
+        var kinet = new Kinet({
+            acceleration: 0.06,
+            friction: 0.20,
+            names: ["x", "y"],
+        });
+
+        var circle = document.getElementById('cursorcircle');
+
+        kinet.on('tick', function (instances) {
+            circle.style.transform = `translate3d(${(instances.x.current)}px, ${(instances.y.current)}px, 0) rotateX(${(instances.x.velocity / 2)}deg) rotateY(${(instances.y.velocity / 2)}deg)`;
+        });
+
+        document.addEventListener('mousemove', function (event) {
+            kinet.animate('x', event.clientX - window.innerWidth / 2);
+            kinet.animate('y', event.clientY - window.innerHeight / 2);
+        });
+
+        kinet.on('start', function () {
+            console.log('start');
+        });
+
+        kinet.on('end', function () {
+            console.log('end');
+        });
+    </script>
+</body>
+
+</html>
