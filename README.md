@@ -29,6 +29,10 @@ Configured with a URI string and specific server API settings.
 This project demonstrates a Node.js application with integrated MongoDB, capable of serving static pages and handling form submissions.   
 The use of Express.js and middleware like Body-parser streamlines the development process, while MongoDB provides a reliable database solution.
 
+## Testing🚀
+
+![Front-end w(Integrated back-end)(deployed locally)](https://raw.githubusercontent.com/EurydiceReverie/SSB_AUTOMATIONS_WD_TASK-05/main/Assets/Back%20end(Final).mp4)
+
 ## Contact 💬
 Project developed by (Karthik K) - [@EurydiceReverie][contact via telegram](https://t.me/SchadenfreudeKK)
 
