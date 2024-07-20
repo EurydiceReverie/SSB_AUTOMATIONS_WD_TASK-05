@@ -5,6 +5,60 @@
 This project is a Node.js web application utilizing Express.js for routing, Body-parser for parsing incoming request bodies, and MongoDB for storing contact form submissions. 
 The application serves static HTML pages and handles form submissions through a connected MongoDB database.
 
+## Getting Started
+
+<b>1. Install latest version of Node Javascript</b>
+  ```shell
+  https://nodejs.org/en/download/prebuilt-installer
+  ```
+
+<b>2. Create a New Directory for your project</b>      
+
+  `mkdir project_name`                                    
+  `cd project_name`
+
+<b>3. Initialize a node project to create a package.json|</b>
+  ```shell
+  npm init -y
+  ```
+
+<b>4. Install MongoDB Driver</b>
+  ```shell
+  npm install mongodb
+  ```
+
+<b>5. Install Dependencies!</b>
+  ```shell
+  npm install express body-parser ejs
+  ```
+
+<b>6. Create app.js|</b>               
+                                                                                                                                                                      
+  * This is the main application file that sets up the server and handles HTML form.
+
+
+<b>7. Sample Project Directory</b>      
+
+```
+project_name/
+├── app.js
+├── package.json
+├── views/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── public/
+│   ├── logo.ico
+│   ├── images.jpeg
+│   └── video.mp4
+└── node_modules/
+```                                                                                                                                                            
+
+<b>8. Start your Node.js| server</b>
+  ```shell
+  node app.js
+  ```
+
 ## Features
 
 ### Express.js
@@ -31,7 +85,7 @@ The use of Express.js and middleware like Body-parser streamlines the developmen
 
 ## Testing🚀
 
-![Front-end w(Integrated back-end)(deployed locally)](https://raw.githubusercontent.com/EurydiceReverie/SSB_AUTOMATIONS_WD_TASK-05/main/Assets/Back%20end(Final).mp4)
+![Front-end w (Integrated back-end) (deployed locally)](https://raw.githubusercontent.com/EurydiceReverie/SSB_AUTOMATIONS_WD_TASK-05/main/Assets/Back%20end(Final).mp4)
 
 ## Contact 💬
 Project developed by (Karthik K) - [@EurydiceReverie][contact via telegram](https://t.me/SchadenfreudeKK)
