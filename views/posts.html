@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon" type="image/x-icon" href="resized.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(100deg, #10002e, #001033, #001935, #001f33, #002431, #0e292f, #1e2d2e, #2b3130);
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      color: #fff;
+    }
+
+    .heading-container {
+      text-align: center;
+      max-width: 600px;
+      margin: 20px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .heading {
+      font-family: "Bodoni Moda SC", serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 2.6em;
+      color: #fff;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+      letter-spacing: 5px;
+      transition: all 0.3s ease-in-out;
+      margin: 0;
+    }
+
+    .heading:hover {
+      color: #b8daf5;
+      text-shadow: 1px 1px 5px #5aa6e4;
+    }
+
+    .line {
+      margin: 5px auto;
+      border-top: 2px solid #b8daf5;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .description {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.2em;
+      line-height: 1.5;
+      color: #e0e0e0;
+      margin-top: 20px;
+    }
+
+    .heading-container::before,
+    .heading-container::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .heading-container::before {
+      top: 10px;
+      left: 10px;
+    }
+
+    .heading-container::after {
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .arrow {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      animation: vibrate 0.5s ease-in-out infinite;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    @keyframes vibrate {
+      0% {
+        transform: translateY(0);
+      }
+
+      25% {
+        transform: translateY(-5px);
+      }
+
+      50% {
+        transform: translateY(0);
+      }
+
+      75% {
+        transform: translateY(5px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-family: "Bodoni Moda SC", serif;
+      font-size: 1.8em;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    h3 {
+      font-family: "Bodoni Moda SC", serif;
+      font-size: 1.5em;
+      margin-top: 15px;
+      color: #fff;
+    }
+
+    p,
+    ul {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.2em;
+      line-height: 1.5;
+      color: #e0e0e0;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .spatial-audio-section {
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+      border-left: 4px solid #b8daf5;
+    }
+
+    .spatial-audio-heading {
+      font-family: "Bodoni Moda SC", serif;
+      font-size: 1.5em;
+      color: #b8daf5;
+      margin: 0 0 10px 0;
+      border-bottom: 2px solid #b8daf5;
+      padding-bottom: 5px;
+    }
+
+    .spatial-audio-content {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.2em;
+      color: #e0e0e0;
+      line-height: 1.5;
+    }
+
+    .sound-wave {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(184, 218, 218, 0);
+      pointer-events: none;
+      display: none;
+      z-index: -1;
+    }
+
+    .sound-wave.active {
+      display: block;
+    }
+
+    .sound-wave::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, transparent 50%, rgba(122, 219, 219, 0.705) 100%);
+      animation: wave 2s infinite linear;
+      transform: translateX(-50%);
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translateX(-50%) scale(1);
+      }
+
+      100% {
+        transform: translateX(-50%) scale(2);
+      }
+    }
+
+    .bubble-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float 10s infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bubble-container"></div>
+  <div class="heading-container">
+    <h1 class="heading">Audio Formats*</h1>
+    <div class="line"></div>
+    <p class="description">Audio formats can be categorized into 3 distinct groups. These are Uncompressed, Lossless,
+      and Lossy files. Also, it helps to know the term PCM and how it applies to the different file types.</p>
+  </div>
+  <div class="arrow" onclick="scrollToContent()"></div>
+
+  <div class="content" id="content">
+    <h2>Bitrates</h2>
+    <p>A bitrate is the number of bits conveyed or transferred in a unit of time. When talking about music formats,
+      bitrate is used in kilobits per second (kbps). When comparing files with different bitrates (of the same song),
+      the file with the higher bitrate has the higher quality. For example, an MP3 320kbps (CBR) file transfers 320
+      kilobits per second.</p>
+    <img src="/assets/wU6PwQBqX8araSHVPqU5fN-970-80.jpg" alt="Bitrates Example"
+      style="max-width: 90%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 15px #32b9e2; padding: 0px; background-color: #ffffff00; border-radius: 10px;">
+
+    <h2>Uncompressed Lossless</h2>
+    <p>Uncompressed lossless formats store all of the original recorded data. Since silence is given the same number of
+      bits per second as sound is, uncompressed lossless files are huge. The main uncompressed lossless format is
+      pulse-code modulation (PCM). For example:</p>
+    <ul>
+      <li>WAV (PCM) (used on Windows)</li>
+      <li>AIFF (PCM) (used on macOS)</li>
+      <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <img src="/assets/2019-09-wav.jpeg" alt="UnCompressed Lossless Example"
+          style="max-width: 25%; height: 25%; display: block; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); border-radius: 10px;">
+        <img src="/assets/2019-09-Signal_Sampling-1024x664.png" alt="Signal Sampling Example"
+          style="max-width: 60%; height: auto; display: block; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); padding: 20px; background-color: #fff; border-radius: 10px;">
+      </div>
+    </ul>
+
+    <h2>Compressed Lossless</h2>
+    <p>Compressed lossless formats store all of the original recorded data in less space than uncompressed lossless
+      formats by compressing the data. By giving silence almost no bits per second and compressing sound, a compressed
+      lossless file is usually half as big as the same song stored in an uncompressed lossless file.</p>
+    <p>Since both uncompressed lossless formats and compressed lossless formats retain all the data from the original
+      recording, they can be transcoded between each other without a loss in quality. For example:</p>
+    <ul>
+      <li>Free Lossless Audio Codec (FLAC)</li>
+      <li>Apple Lossless Audio Codec (ALAC)</li>
+      <li>Monkey's Audio (APE)</li>
+    </ul>
+    <img src="/assets/2019-09-2000px-Mpeg4sls.svg_-910x1024.png" alt="Compressed Lossless Example"
+      style="max-width: 60%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); padding: 20px; background-color: #fff; border-radius: 10px;">
+
+    <h2>Lossy</h2>
+    <p>Lossy formats are always compressed. Lossy formats have smaller file sizes than both uncompressed lossless
+      formats and compressed lossless formats because they remove some of the original data. Usually the removed data is
+      in the higher frequencies that humans can't hear, however, there can be obvious audible differences between lossy
+      formats and lossless formats.</p>
+    <p>Lossy formats CANNOT be transcoded into any other lossy format without losing more quality. It CANNOT be
+      transcoded into lossless either, because it wouldn't be a true lossless file when the source medium is already
+      lossy. Examples of lossy formats include:</p>
+    <ul>
+      <li>MPEG Layer 3 Audio (MP3)</li>
+      <li>Advanced Audio Encoding (AAC)</li>
+      <li>Windows Media Audio (WMA)</li>
+      <li>Dolby Digital Audio Codec 3 (AC3)</li>
+      <li>DTS Coherent Acoustics Codec (DTS)</li>
+      <img src="/assets/2019-09-Mp3.svg_-1024x517.png" alt="Lossy Example"
+        style="max-width: 30%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 35px #03b2e7; padding: 20px; background-color: #fff; border-radius: 10px;">
+    </ul>
+
+    <h2>File size</h2>
+    <p>How big your audio file will be depends on the length of the audio as well as its bitrate. When the files are
+      stored on disk, they take up a certain amount of space, the actual storage space needed is measured in bytes (or
+      megabytes/gigabytes for larger files).</p>
+    <ul>
+      <li>Uncompressed Lossless — WAV (PCM): 34.3 MB</li>
+      <li>Compressed Lossless — FLAC: 25.75 MB (25% compressed)</li>
+      <li>Lossy — MP3 320 (CBR): 7.78 MB (78% compressed)</li>
+      <img src="/assets/2019-09-actuator-arm-close-up-data-33278-1024x683.jpg" alt="Lossy Example"
+        style="max-width: 50%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); padding: 0px; background-color: #fff; border-radius: 10px;">
+    </ul>
+
+    <h2>Transparency</h2>
+    <p>Transparency is a term used to describe the audible quality of a lossy music file. A lossy file is considered
+      transparent if the average human cannot tell the difference between the lossy file and a lossless file of the same
+      song by just listening to both without knowing which file is which. For most people, MP3 192kbps (CBR) is
+      considered transparent.</p>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <img src="/assets/2019-09-black-connection-device-6320-1024x683.jpg" alt="Transparency Example"
+        style="max-width: 35%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 35px #02bcf5; padding: 0px; background-color: #ffffff00; border-radius: 10px;">
+      <img src="/assets/th.jfif" alt="Casual Listener"
+        style="max-width: 60%; height: auto; display: block; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); padding: 0px; background-color: #fff; border-radius: 10px;">
+    </div>
+
+    <h2>Spatial Audio</h2>
+
+    <div class="spatial-audio-section">
+      <h3 class="spatial-audio-heading">Dolby Atmos</h3>
+      <p class="spatial-audio-content">Dolby Atmos (EC-3/EAC3-JOC) is an advanced audio technology that allows sound to
+        be precisely placed and moved in three-dimensional space, including overhead. It extends the concept of surround
+        sound with added height channels, providing a more immersive audio experience.</p>
+      <li>Object-based audio format, where sound elements can be placed in any position within a 3D space.</li>
+      <li>Provides a dynamic and lifelike sound experience, enhancing the feeling of being inside the action.</li>
+      <li>Supported in theaters, home theaters, soundbars, headphones, and even mobile devices.</li>
+    </div>
+    <img src="/assets/da-flexconnect-hero.webp" alt="Dolby Atmos Example"
+      style="max-width: 70%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); padding: 0px; background-color: #ffffffe3; border-radius: 10px;">
+
+
+    <div class="spatial-audio-section">
+      <h3 class="spatial-audio-heading">Dolby Digital</h3>
+      <p class="spatial-audio-content">Dolby Digital (also known as AC-3/AC-4 IMS) is a digital audio coding standard
+        that compresses audio data to reduce the amount of space needed for storage and transmission. It is commonly
+        used in DVDs, Blu-rays, and broadcast television.</p>
+      <li>Supports up to 5.1 channels of audio (five full-bandwidth channels and one low-frequency effects channel).
+      </li>
+      <li>Provides high-quality sound with efficient compression.</li>
+      <li>Widely used in broadcast media.</li>
+    </div>
+
+    <div class="spatial-audio-section">
+      <h3 class="spatial-audio-heading">Sony 360 Reality Audio</h3>
+      <p class="spatial-audio-content">Sony 360 Reality Audio (MHM1/MHA1) is an immersive audio format that uses
+        object-based spatial audio technology to create a 360-degree sound field. This format aims to recreate the
+        experience of being at a live concert or in a recording studio with sound coming from all directions.</p>
+      <li>Uses object-based audio to place individual sound sources around the listener in a 3D space.</li>
+      <li>Provides an immersive listening experience similar to Dolby Atmos but at (higher bitrates) focused on music
+        rather than cinematic audio.</li>
+      <li>Compatible with selected headphones and speakers only, requires compatible decoder that supports the format.
+      </li>
+    </div>
+    <img src="/assets/2a1d7ab60a104fb173c4f4ea1bdaa6e4.avif" alt="Sony360_RA Example"
+      style="max-width: 70%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); padding: 0px; background-color: #ffffffe3; border-radius: 10px;">
+
+    <div class="spatial-audio-section">
+      <h3 class="spatial-audio-heading">Binaural Audio</h3>
+      <p class="spatial-audio-content">Binaural audio is a method of recording sound that uses two microphones arranged
+        to create a 3D stereo sound sensation for the listener. This recording technique is designed to mimic the way
+        human ears hear, with the microphones placed at a distance that simulates the human head.</p>
+      <li>Creates an immersive listening experience, making the listener feel as if they are in the room where the sound
+        was recorded.</li>
+      <li>Best experienced using headphones (Apple Airpods/Beats) [Head-Tracking]Technology</li>
+      <li>Used often in virtual reality (VR) and augmented reality (AR) applications.</li>
+    </div>
+    <img src="/assets/apple-airpods-spatial-1.webp" alt="Binaural Example"
+      style="max-width: 65%; height: auto; display: block; margin: 20px auto; box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); padding: 0px; background-color: #ffffffe3; border-radius: 10px;">
+
+
+    <div class="spatial-audio-section">
+      <h3 class="spatial-audio-heading">Downmix</h3>
+      <p class="spatial-audio-content">Downmixing is the process of converting a multi-channel audio track (such as 5.1
+        or 7.1 surround sound) into a format with fewer channels (such as stereo or mono).</p>
+      <li>Ensures compatibility with different playback systems that may not support multi-channel audio.</li>
+      <li>Important for maintaining audio quality and balance when played on devices that do not support the original
+        format.</li>
+      <li>Often used in broadcasting, streaming, and when creating home audio versions of theatrical releases.</li>
+    </div>
+
+  </div>
+  <div class="sound-wave" id="soundWave"></div>
+
+  <button onclick="toggleSoundWave()">Toggle Sound Wave</button>
+
+  <script>
+    function scrollToContent() {
+      if (window.scrollY === 0) {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+    }
+    function toggleSoundWave() {
+      const soundWave = document.getElementById('soundWave');
+      soundWave.classList.toggle('active');
+    }
+
+    function createBubble() {
+      const bubbleContainer = document.querySelector('.bubble-container');
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      bubble.style.left = `${Math.random() * 100}vw`;
+      bubble.style.animationDuration = `${Math.random() * 5 + 5}s`;
+      bubble.style.width = bubble.style.height = `${Math.random() * 20 + 10}px`;
+      bubbleContainer.appendChild(bubble);
+
+      bubble.addEventListener('animationend', () => {
+        bubble.remove();
+      });
+    }
+
+    setInterval(createBubble, 1000);
+
+  </script>
+
+</body>
+<!-- #10002e #1b5483 -->
+
+</html>
