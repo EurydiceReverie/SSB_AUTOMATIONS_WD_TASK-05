@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="resized.ico">
+    <title>Eurydice Discern - Machine Learning Project</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: #000;
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ffffff;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .btn-shine {
+            position: absolute;
+            top: 3.5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 12px 48px;
+            color: #fff;
+            background: linear-gradient(to right, #4d4d4d 0, #fff 10%, #4d4d4d 20%);
+            background-position: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 2.5s infinite linear;
+            animation-fill-mode: forwards;
+            -webkit-text-size-adjust: none;
+            font-weight: 600;
+            font-size: 2.5em;
+            text-decoration: none;
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        .h2_style {
+            margin-top: -70px;
+            margin-left: -950px;
+        }
+
+        .h2_style1 {
+            margin-top: -90px;
+            margin-left: -885px;
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 1000px;
+            margin: 106px auto;
+            line-height: 1.4;
+        }
+
+        .modified_text {
+            margin-top: -90px;
+            margin-left: 140px;
+            font-size: 1.2em;
+            max-width: 1000px;
+            line-height: 1.4;
+        }
+
+        a {
+            color: #30d2be;
+            text-decoration: none;
+            /* font-weight: bold; */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .video-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .video-description {
+            margin: 20px auto;
+            font-size: 1.2em;
+            max-width: 800px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .video-background1,
+        .video-background2,
+        .video-background3 {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+            border-radius: 30px;
+        }
+
+        .video-description1,
+        .video-description2,
+        .video-description3 {
+            margin: 20px auto;
+            font-size: 1.2em;
+            max-width: 900px;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .video-background1:hover,
+        .video-background2:hover,
+        .video-background3:hover {
+            box-shadow: 0 0 25px rgb(3, 180, 224);
+        }
+
+        @-moz-keyframes shine {
+            0% {
+                background-position: 0;
+            }
+
+            60% {
+                background-position: 180px;
+            }
+
+            100% {
+                background-position: 360px;
+            }
+        }
+
+        @-webkit-keyframes shine {
+            0% {
+                background-position: 0;
+            }
+
+            60% {
+                background-position: 180px;
+            }
+
+            100% {
+                background-position: 360px;
+            }
+        }
+
+        @-o-keyframes shine {
+            0% {
+                background-position: 0;
+            }
+
+            60% {
+                background-position: 180px;
+            }
+
+            100% {
+                background-position: 360px;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0;
+            }
+
+            60% {
+                background-position: 180px;
+            }
+
+            100% {
+                background-position: 360px;
+            }
+        }
+
+        .extrads {
+            margin-top: -9%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"> 
+        <h1 class="btn-shine">Eurydice Discern</h1>
+        <p>
+            Welcome! to the Eurydice project page. This project is focused on
+            machine learning and aims to identify sound using advanced
+            algorithms. To explore the project further, please visit the
+            <a href="https://github.com/EurydiceReverie/EurydiceDiscern" target="_blank">GitHub repository</a>.
+        </p>
+        <h2 class="h2_style"><u>|- About Eurydice!</u></h2>
+        <p>
+        <div class="modified_text">
+            Eurydice is a versatile music recognition tool written in Python that can identify and tag unknown audio
+            files by using multiple services.
+        </div>
+        </p>
+    </div>
+    <h2 class="h2_style1"><u>|- Testing/Run Samples!</u></h2>
+    <!-- File Identification Content -->
+    <div class="video-container">
+        <div class="video-description video-description1">
+            <strong><u>File Identification 📁:</u></strong><br>
+            Description: Processes audio files from your test_file directory to identify the music they contain.<br>
+            Ideal for: Tags unknown or unorganized music files (like album_cover, MetaData, Synced Lyrics) to
+            unknown_file.audio_format in your collection.
+        </div>
+        <video class="video-background1" autoplay muted loop>
+            <source src="/assets/File_Audio_Recognition_guide.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Internal Audio Content -->
+    <div class="video-container">
+        <div class="video-description video-description2">
+            <strong><u>Microphone Input 🎤:</u></strong><br>
+            Description: Identifies the music playing around you in real-time using your computer's microphone.<br>
+            Ideal for: Quickly recognizing songs playing in the background, at events, or on the radio.
+        </div>
+        <video class="video-background2" autoplay muted loop>
+            <source src="/assets/Internal_audio_Recognition_guide.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Mic Audio Content -->
+    <div class="video-container">
+        <div class="video-description video-description3">
+            <strong><u>Soundcard Capture 🎧:</u></strong><br>
+            Description: Analyzes the audio output from your soundcard, identifying the music currently playing through
+            your computer's speakers or headphones.<br> Ideal for: Identifying music from streaming services, media
+            players, or other applications.
+        </div>
+        <video class="video-background3" autoplay muted loop>
+            <source src="/assets/Mic_audio_Recognition_guide.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="extrads">
+        <p>
+            .
+        </p>
+    </div>
+</body>
+
+</html>
