@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="resized.ico">
+    <title>Contact Me</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, #dc9ed8, #bb1e42);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .marquee {
+            width: 98.8%;
+            background: rgba(255, 255, 255, 0);
+            padding: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .marquee p {
+            white-space: nowrap;
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+            font-size: 18px;
+            color: #fcd0ef;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .contact-form h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #bb1e42;
+            outline: none;
+            box-shadow: 0 0 5px rgba(187, 30, 66, 0.5);
+        }
+
+        button {
+            background: #bb1e42;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: #a81b3d;
+            box-shadow: 0 6px 12px rgb(216, 10, 96);
+        }
+
+        .prompt {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #ffcccb;
+            color: #a81b3d;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+
+        .prompt.success {
+            background: #ffcccb;
+            color: #a81b3d;
+        }
+    </style>
+</head>
+<body>
+    <div class="marquee">
+        <p><b>Thank You for your time | Made by KK</b></p>
+    </div>
+    <div class="container">
+        <form class="contact-form" id="contactForm" method="POST" action="/contact">
+            <h2>Contact Me for project collaboration</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+            <div class="prompt" id="formPrompt"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var message = document.getElementById('message').value.trim();
+            var prompt = document.getElementById('formPrompt');
+
+            if (!name || !email || !message) {
+                prompt.textContent = 'Fields cannot be empty';
+                prompt.style.display = 'block';
+                prompt.classList.remove('success');
+            } else {
+                prompt.textContent = 'Sending & Validating message⍨... please wait!';
+                prompt.style.display = 'block';
+                prompt.classList.add('success');
+
+                setTimeout(function() {
+                    document.getElementById('contactForm').submit();
+                }, 10000);
+            }
+        });
+    </script>
+</body>
+</html>
